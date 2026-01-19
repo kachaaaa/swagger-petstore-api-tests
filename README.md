@@ -32,4 +32,4 @@ The tests were created using Postman and cover both positive and negative scenar
 3. Review status codes and test results
 
 ## 👨‍💻 Author
-Sergey
+Serhii
