@@ -1,0 +1,248 @@
+{
+  "info": {
+    "_postman_id": "4ff6aa4a-c71f-4eef-8a7a-99c38d004152",
+    "name": "Swagger Pet store API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50519126",
+    "_collection_link": "https://go.postman.co/collection/50519126-4ff6aa4a-c71f-4eef-8a7a-99c38d004152?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "USERS",
+      "item": [
+        {
+          "name": "Create user ( POST )",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"username\": \"qa_user_1\",\n  \"firstName\": \"QA\",\n  \"lastName\": \"Tester\",\n  \"email\": \"qa1@test.com\",\n  \"password\": \"123456\",\n  \"phone\": \"380501234567\",\n  \"userStatus\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login user ( GET )",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user/login?username=qa_user_1&password=123456",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "qa_user_1",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "123456",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login with wrong password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user/login?username=qa_user_1&password=wrong_pass",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "qa_user_1",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "wrong_pass",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get user with empty username",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user/unknown_user_999",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "unknown_user_999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET user ( GET )",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user/qa_user_1",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "qa_user_1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update user ( PUT )",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"username\": \"qa_user_1\",\n  \"firstName\": \"QA_UPDATED\",\n  \"lastName\": \"Tester\",\n  \"email\": \"updated@test.com\",\n  \"password\": \"123456\",\n  \"phone\": \"111111111\",\n  \"userStatus\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user/qa_user_1",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user",
+                "qa_user_1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Negative tests",
+      "item": [
+        {
+          "name": "Create user with empty username",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 2,\n  \"username\": \"\",\n  \"firstName\": \"QA\",\n  \"lastName\": \"Tester\",\n  \"email\": \"qa2@test.com\",\n  \"password\": \"123456\",\n  \"phone\": \"123\",\n  \"userStatus\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://petstore.swagger.io/v2/user",
+              "protocol": "https",
+              "host": [
+                "petstore",
+                "swagger",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
